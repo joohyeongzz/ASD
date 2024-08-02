@@ -6,7 +6,7 @@ const hostname = window && window.location && window.location.hostname;
 if (hostname === "localhost") {
   backendHost = "http://localhost:8080"; // 로컬 개발 서버 주소
 } else {
-  backendHost = "https://todo-backend-dev2.ap-northeast-2.elasticbeanstalk.com"; // 배포된 서버 주소
+  backendHost = "https://_a1a2cce034f426a5dccee9d51b426903.awskjh.p-e.kr"; // 배포된 서버 주소
 }
 
 export const API_BASE_URL = backendHost;
