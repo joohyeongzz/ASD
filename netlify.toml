@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/*"
+  to = "https://www.awskjh.p-e.kr/:splat"
+  status = 200
+  force = true
