@@ -14,10 +14,9 @@ function App() {
   useEffect(() =>{
     call("/todo", "GET", null).then((response) => {
       setItems(response.data);  
-      console.log(items);
       setLoading(false);      //로딩 끝
     });
-  },[items]);
+  },[]);
 
 
   const addItem = (item) => {
