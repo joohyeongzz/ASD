@@ -1,5 +1,6 @@
 //API 통신 서비스를 위한 함수 정의
 
+import { useNavigate } from "react-router-dom";
 import { API_BASE_URL } from "../api-config";
 
 export function call(api, method, request) {
@@ -46,13 +47,14 @@ export function call(api, method, request) {
 }
 
 export function signin(userDTO) {  //Login.js에서 사용!
+    const navigate = useNavigate();
   return call("/auth/signin", "POST", userDTO)
     .then((response) => {
       if(response.token) {
         //로컬 스토리지에 토큰 저장
         localStorage.setItem("ACCESS_TOKEN", response.token);
         //token이 존재하는 경우 Todo 화면으로 리다이렉트
-        window.location.href = "/";
+        navigate("/");  // 리다이렉트
       }
     });
 }
