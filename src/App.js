@@ -17,7 +17,7 @@ function App() {
       console.log(items);
       setLoading(false);      //로딩 끝
     });
-  },[]);
+  },[items]);
 
 
   const addItem = (item) => {
