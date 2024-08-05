@@ -46,18 +46,16 @@ export function call(api, method, request) {
 
 }
 
-export function signin(userDTO) {  //Login.js에서 사용!
-    const navigate = useNavigate();
-  return call("/auth/signin", "POST", userDTO)
-    .then((response) => {
-      if(response.token) {
-        //로컬 스토리지에 토큰 저장
-        localStorage.setItem("ACCESS_TOKEN", response.token);
-        //token이 존재하는 경우 Todo 화면으로 리다이렉트
-        navigate("/");  // 리다이렉트
-      }
-    });
-}
+export function signin(userDTO) {
+    return call("/auth/signin", "POST", userDTO)
+      .then((response) => {
+        if (response.token) {
+          localStorage.setItem("ACCESS_TOKEN", response.token);
+          return true;
+        }
+        return false;
+      });
+  }
 
 export function signout() {
   localStorage.setItem("ACCESS_TOKEN", null);

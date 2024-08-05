@@ -4,15 +4,26 @@ import { Button, Container, Grid, TextField, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const Login = () => {
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.target);
-    const username = data.get("username");
-    const password = data.get("password");
-    //ApiService에 signin 메서드를 사용해서 로그인... 
-    signin({username: username, password: password});
-  };
+    const navigate = useNavigate();
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const data = new FormData(event.target);
+        const username = data.get("username");
+        const password = data.get("password");
+    
+        try {
+          const success = await signin({ username, password });
+          if (success) {
+            navigate("/"); // 로그인 성공 후 홈으로 리다이렉트
+          } else {
+            // 로그인 실패 시 사용자에게 알림
+            alert("로그인 실패. 아이디와 비밀번호를 확인해주세요.");
+          }
+        } catch (error) {
+          console.error("로그인 중 오류 발생:", error);
+          alert("로그인 중 오류가 발생했습니다. 다시 시도해주세요.");
+        }
+      };
 
 
   return (
