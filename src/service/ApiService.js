@@ -33,9 +33,8 @@ export function call(api, method, request) {
       console.log(response.status);
       if (response.status === 200) {
         return response.json();
-      } else if(response.status === 403) {
-        window.location.href = "/login";   //redirect
-      } else {
+      } 
+       else {
         Promise.reject(response);
         throw Error(response);
       }
