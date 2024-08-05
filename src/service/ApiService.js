@@ -1,6 +1,6 @@
 //API 통신 서비스를 위한 함수 정의
 
-import { useNavigate } from "react-router-dom";
+
 import { API_BASE_URL } from "../api-config";
 
 export function call(api, method, request) {
